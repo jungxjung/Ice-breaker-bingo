@@ -1,11 +1,12 @@
-.checked{
-    background:#FF0000
-}
-
 td:hover{
     background-color: aquamarine;
 }
 
 #dialog{
+    display: none;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    border:1px;
     display: none;
 }
