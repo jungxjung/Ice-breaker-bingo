@@ -1,3 +1,8 @@
+.checked{
+    background-color: blueviolet;
+}
+
 td:hover{
     background-color: aquamarine;
 }
+
