@@ -1,8 +1,11 @@
 .checked{
-    background-color: blueviolet;
+    background:#FF0000
 }
 
 td:hover{
     background-color: aquamarine;
 }
 
+#dialog{
+    display: none;
+}
