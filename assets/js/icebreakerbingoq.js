@@ -1,5 +1,5 @@
-var cybervsrq = {
-    "questions" : [
+var questions = {
+    "cybervsr" : [
         "IS LEFT HANDED",
         "LIVES IN SOUTHERN HEMISPHERE",
         "IS A GRADUATE STUDENT",
