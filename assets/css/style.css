@@ -11,6 +11,10 @@ td:hover{
     display: none;
 }
 
+table {
+    table-layout : fixed;
+}
+
 td span{
     display: block;
     font-weight: bold;

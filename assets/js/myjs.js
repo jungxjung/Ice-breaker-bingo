@@ -5,7 +5,7 @@ $( document ).ready(function(){
         if (cell.children('span').length==0){
             if($('#dialog').children('input')[0].value != ""){
                 cell.append(document.createElement('span'));
-                cell.children('span')[0].innerHTML=$('#dialog').children('input')[0].value;
+                cell.children('span').text($('#dialog').children('input')[0].value);
             } else{
                 return false;
             }
@@ -13,7 +13,7 @@ $( document ).ready(function(){
             if($('#dialog').children('input')[0].value == ""){
                 cell.children('span')[0].remove();
             }else{
-                cell.children('span')[0].innerHTML=$('#dialog').children('input')[0].value;
+                cell.children('span').text($('#dialog').children('input')[0].value);
             }
         }
     }
@@ -86,7 +86,7 @@ $( document ).ready(function(){
                     }
                 },
                 {
-                    text: "Cancel",
+                    text: "Close",
                     click: function() {
                         $( this ).dialog( "close" );
                     }
