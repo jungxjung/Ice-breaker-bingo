@@ -71,6 +71,8 @@ $( document ).ready(function(){
         }else{
             $('#dialog').children('input')[0].value = $thisCell.children('span')[0].innerHTML;
         }
+
+        $('#dialog').children('p').text($thisCell[0].childNodes[0].nodeValue);
         
         $('#dialog').dialog({
             buttons: [
