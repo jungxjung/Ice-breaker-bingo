@@ -4,7 +4,7 @@ $( document ).ready(function(){
     function addName(cell){
         if (cell.children('span').length==0){
             if($('#dialog').children('input')[0].value != ""){
-                cell.append(document.createElement('span'));
+                cell.prepend(document.createElement('span'));
                 cell.children('span').text($('#dialog').children('input')[0].value);
             } else{
                 return false;
@@ -71,8 +71,12 @@ $( document ).ready(function(){
         }else{
             $('#dialog').children('input')[0].value = $thisCell.children('span')[0].innerHTML;
         }
+        var $cellQ = $thisCell.contents().filter(function() {
+            return this.nodeType == Node.TEXT_NODE;
+          }).text();
+          $('#dialog').children('p').text($cellQ);
 
-        $('#dialog').children('p').text($thisCell[0].childNodes[0].nodeValue);
+        //$('#dialog').children('p').text($thisCell[0].childNodes[0].nodeValue);
         
         $('#dialog').dialog({
             buttons: [
