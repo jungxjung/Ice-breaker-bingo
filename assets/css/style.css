@@ -11,7 +11,11 @@ header{
     margin-top: 150px;
 }
 
-td:hover{
+#bingo td{
+    cursor: pointer;
+}
+
+#bingo td:hover{
     background-color: aquamarine;
 }
 
