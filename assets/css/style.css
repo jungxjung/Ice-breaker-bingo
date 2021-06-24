@@ -17,6 +17,15 @@ header{
     transition: color, 0.5s;
 }
 
+#bingoAlert {
+    width: 20%;
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 150px;
+
+}
+
 #bingo td:hover{
     background-color: aquamarine;
 }

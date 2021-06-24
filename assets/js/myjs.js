@@ -58,13 +58,11 @@ function countCheckedCell(){
 function countCheckedLine(){
     let counter=0;
     $('#bingo tr').each(function(){
-        //console.log($(this).children('.bg-primary').length);
-        //console.log($(this).children('td').length);
         if($(this).children('.bg-primary').length==$(this).children('td').length){
             counter++;
         }
         
-    })
+    });
 
     var bingoTR = document.querySelectorAll('#bingo tr');
     let tempCounter2 = 0; // counter for cells on the diagonal line
@@ -98,9 +96,14 @@ function countCheckedLine(){
         }
     }
 
-
-
-
+    if(counter == 0 || counter <= $("#num-line-checked").text()){
+        $("#bingoAlert").hide();
+    }else{
+        $("#bingoAlert").text("Congratulation! You finished " + counter + "line(s)!");
+        $("#bingoAlert").show(1000, function(){
+            setTimeout(function(){$("#bingoAlert").hide(1000);},2000);
+        });
+    }
     $('#num-line-checked').text(counter);
 }
 
@@ -112,6 +115,7 @@ function markCellColor(cell){
         cell.removeClass('bg-primary text-white');
     }
 }
+
 
 $( document ).ready(function(){
     var user = prompt("Please enter your name", "Harry Potter");
@@ -172,8 +176,8 @@ $( document ).ready(function(){
                         addName($thisCell);
                         markCellColor($thisCell);
                         countCheckedCell();
-                        countCheckedLine()
-                        $( this ).dialog( "close" );
+                        countCheckedLine();
+                        $( this ).dialog( "destroy" );
                     }
                 },
                 {
@@ -182,8 +186,8 @@ $( document ).ready(function(){
                         clearName($thisCell);
                         markCellColor($thisCell);
                         countCheckedCell();
-                        countCheckedLine()
-                        $( this ).dialog( "close" );
+                        countCheckedLine();
+                        $( this ).dialog( "destroy" );
                     }
                 },
                 {
