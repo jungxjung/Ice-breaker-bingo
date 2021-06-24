@@ -14,6 +14,8 @@ function loadQuestion(){
     }
 
     $('.bingocell').removeClass('bg-primary text-white');
+    countCheckedCell();
+    countCheckedLine();
 }
 
 // Add player's name to the bingo cell

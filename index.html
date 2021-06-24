@@ -27,7 +27,7 @@
             <section id="howto">
                 <div id="step1" class="steps">
                     <h5>Step 1: Pick a bingo card</h5>
-                    <p>Everytime you refresh this page, you will get a new set of missions on your card. Pick one and stick to it untill the end!</p>
+                    <p>Click 🔄 to get a new set of missions on your card. Pick one and stick to it untill the end!</p>
                 </div>
                 <div id="step2" class="steps">
                     <h5>Step 2: Breakout room</h5>
@@ -35,7 +35,7 @@
                 </div>
                 <div id="step3" class="steps">
                     <h5>Step 3: Mingle</h5>
-                    <p>You have <b>3 minutes</b> to say hi and find people who match the traits on the bingo card in this breakout room.</p>
+                    <p>You have <b>3 minutes</b> to say hi and find people who match the traits on your bingo card in this breakout room.</p>
                 </div>
                 <div id="step4" class="steps">
                     <h5>Step 4: Mark your card</h5>
@@ -47,12 +47,13 @@
                 </div>
             </section>
         </div>
-        <main class="container" id="bingo-table">
-            <div id="shuffleBtnContainer" class="text-center p-3">
+        <main class="container mt-5" id="bingo-table">
+            <h5 id="bingo-heading" class="text-center"></h5>
+            <div id="shuffleBtnContainer" class="text-center pb-3">
                 <button onclick="return loadQuestion()" id="shuffleBtn">🔄</button>
             </div>
             <div id="bingo" class="container"></div>
-            <h6 id="bingo-heading" class="text-center"></h6>
+
             <div id="dialog" class="text-center">
                 <label for="uname">🧐Who?🤔</label>
                 <br>
