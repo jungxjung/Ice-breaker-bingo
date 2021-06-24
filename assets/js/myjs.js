@@ -36,6 +36,13 @@ function addName(cell){
     }
 }
 
+function clearName(cell){
+    $('#dialog').children('input')[0].value = "";
+    if(cell.children('span').length>0){
+        cell.children('span')[0].remove();
+    }
+}
+
 function countCheckedCell(){
     let counter=0;
     $('.bingocell').each(function(){
@@ -113,6 +120,11 @@ $( document ).ready(function(){
         $('#bingo-heading').text(user+"'s bingo card");
     }
 
+    // To enable tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+
     // build a empty bingo table
     var tableContent;
     var num_row, num_col;
@@ -158,6 +170,16 @@ $( document ).ready(function(){
                     text: "Ok",
                     click: function() {
                         addName($thisCell);
+                        markCellColor($thisCell);
+                        countCheckedCell();
+                        countCheckedLine()
+                        $( this ).dialog( "close" );
+                    }
+                },
+                {
+                    text: "Clear",
+                    click: function(){
+                        clearName($thisCell);
                         markCellColor($thisCell);
                         countCheckedCell();
                         countCheckedLine()

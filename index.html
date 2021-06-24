@@ -47,11 +47,12 @@
                 </div>
             </section>
         </div>
+
         <main class="container mt-5" id="bingo-table">
-            <h5 id="bingo-heading" class="text-center"></h5>
             <div id="shuffleBtnContainer" class="text-center pb-3">
-                <button class="btn btn-secondary" onclick="return loadQuestion()" id="shuffleBtn" data-toggle="tooltip" data-placement="right" title="&#8252;You will lose all your current records">🔄</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="return loadQuestion()" id="shuffleBtn" data-toggle="tooltip" data-placement="right" title="&#8252;You will lose all your current records&#8252;">🔄</button>
             </div>
+            <h5 id="bingo-heading" class="text-center"></h5>
             <div id="bingo" class="container"></div>
 
             <div id="dialog" class="text-center">
@@ -72,6 +73,7 @@
     <footer class="text-center container p-5">
         <p>Made by <a href="http://chih-jung-chen.netlify.app/" target="_blank">Chih-Jung Chen</a> 2021 😁</p>
     </footer>
+
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

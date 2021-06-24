@@ -13,6 +13,8 @@ header{
 
 #bingo td{
     cursor: pointer;
+    transition: background-color, 0.5s;
+    transition: color, 0.5s;
 }
 
 #bingo td:hover{
