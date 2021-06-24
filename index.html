@@ -17,51 +17,58 @@
     <header class="container">
         <h1>🧊⛏️Icebreaker Bingo</h1>
     </header>
-    <div id="how" class="container">
-        <h2>How to play?</h2>
-        <section id="howto">
-            <div id="step1" class="steps">
-                <h5>Step 1: Pick a bingo card</h5>
-                <p>Everytime you refresh this page, you will get a new set of missions on your card. Pick one and stick to it untill the end!</p>
-            </div>
-            <div id="step2" class="steps">
-                <h5>Step 2: Breakout room</h5>
-                <p>The moderator (RR) will send you to a breakout room. Each breakout room has 3 - 4 participants.</p>
-            </div>
-            <div id="step3" class="steps">
-                <h5>Step 3: Mingle</h5>
-                <p>You have <b>3 minutes</b> to say hi and find people who match the traits on the bingo card in this breakout room.</p>
-            </div>
-            <div id="step4" class="steps">
-                <h5>Step 4: Mark your card</h5>
-                <p>Once you find the person with the correct trait, click on the box and input the person's name.</p>
-            </div>
-            <div id="step5" class="steps">
-                <h5>Step 5: Repeat step 3&4</h5>
-                <p>We will do the same thing for at least 3 rounds. Don't forget to yell <b>BINGO</b> when you fill five boxes across, down or diagonal.</p>
-            </div>
-        </section>
-    </div>
-    <main class="container">
-        <div id="bingo" class="container"></div>
-
-        <div id="dialog" class="text-center">
-            <label for="uname">🧐Who?🤔</label>
-            <br>
-            <input type="text" placeholder="Name">
-            <p></p>
+    <div id="main-bingo-page" class="container">
+        <h5 id="greet" class="text-right"></h5>
+        <div id="how">
+            <h2>How to play?</h2>
+            <section id="howto">
+                <div id="step1" class="steps">
+                    <h5>Step 1: Pick a bingo card</h5>
+                    <p>Everytime you refresh this page, you will get a new set of missions on your card. Pick one and stick to it untill the end!</p>
+                </div>
+                <div id="step2" class="steps">
+                    <h5>Step 2: Breakout room</h5>
+                    <p>The moderator (RR) will send you to a breakout room. Each breakout room has 3 - 4 participants.</p>
+                </div>
+                <div id="step3" class="steps">
+                    <h5>Step 3: Mingle</h5>
+                    <p>You have <b>3 minutes</b> to say hi and find people who match the traits on the bingo card in this breakout room.</p>
+                </div>
+                <div id="step4" class="steps">
+                    <h5>Step 4: Mark your card</h5>
+                    <p>Once you find the person with the correct trait, click on the box and input the person's name.</p>
+                </div>
+                <div id="step5" class="steps">
+                    <h5>Step 5: Repeat step 3&4</h5>
+                    <p>We will do the same thing for at least 3 rounds. Don't forget to yell <b>BINGO</b> when you fill five boxes across, down or diagonal.</p>
+                </div>
+            </section>
         </div>
-    </main>
-    <div id="achievement" class="container">
-        <ul>
-            <li>Cells Checked: <span></span></li>
-            <li>Lines Checked: <span></span></li>
-        </ul>
+        <main class="container" id="bingo-table">
+            <div id="shuffleBtnContainer" class="text-center">
+                <button onclick="return loadQuestion()" id="shuffleBtn">🔄</button>
+            </div>
+            <div id="bingo" class="container"></div>
+            <h6 id="bingo-heading" class="text-center"></h6>
+            <div id="dialog" class="text-center">
+                <label for="uname">🧐Who?🤔</label>
+                <br>
+                <input type="text" placeholder="Name">
+                <p></p>
+            </div>
+        </main>
+        <div id="achievement" class="container">
+            <ul>
+                <li>Cells Checked: <span id="num-cell-checked">0</span></li>
+                <li>Lines Checked: <span id="num-line-checked">0</span></li>
+            </ul>
+        </div>
     </div>
+
     <footer class="text-center container">
         <p>Made by <a href="http://chih-jung-chen.netlify.app/" target="_blank">Chih-Jung Chen</a> 2021 😁</p>
     </footer>
-    
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- jquery -->

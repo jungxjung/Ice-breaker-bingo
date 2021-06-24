@@ -2,12 +2,21 @@ body{
     background:#eaedf7;
 }
 
+
 td:hover{
     background-color: aquamarine;
 }
 
 #dialog{
     display: none;
+}
+
+#greet{
+    text-align: right;
+}
+
+#shuffleBtn{
+    text-align: center;	
 }
 
 .ui-dialog .ui-dialog-titlebar {

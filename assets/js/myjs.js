@@ -1,30 +1,114 @@
-$( document ).ready(function(){
 
-    // Add player's name to the bingo cell
-    function addName(cell){
-        if (cell.children('span').length==0){
-            if($('#dialog').children('input')[0].value != ""){
-                cell.prepend(document.createElement('span'));
-                cell.children('span').text($('#dialog').children('input')[0].value);
-            } else{
-                return false;
-            }
+// Load questions to the bingo table randomly from json
+function loadQuestion(){
+    var questionsFL = [];
+    for (let i = 0; i<questions.cybervsr.length; i++){
+    questionsFL[i]=questions.cybervsr[i];
+        }
+    // Randomly select 25 questions from the full 
+    // question list and populate the table
+    for (let i =0; i<$('.bingocell').length; i++){
+        let random_num = Math.floor(Math.random() * questionsFL.length);
+        $('.bingocell')[i].innerHTML = questionsFL[random_num];
+        questionsFL.splice(random_num, 1);
+    }
+
+    $('.bingocell').removeClass('bg-primary text-white');
+}
+
+// Add player's name to the bingo cell
+function addName(cell){
+    if (cell.children('span').length==0){
+        if($('#dialog').children('input')[0].value != ""){
+            cell.prepend(document.createElement('span'));
+            cell.children('span').text($('#dialog').children('input')[0].value);
+        } else{
+            return false;
+        }
+    }else{
+        if($('#dialog').children('input')[0].value == ""){
+            cell.children('span')[0].remove();
         }else{
-            if($('#dialog').children('input')[0].value == ""){
-                cell.children('span')[0].remove();
-            }else{
-                cell.children('span').text($('#dialog').children('input')[0].value);
+            cell.children('span').text($('#dialog').children('input')[0].value);
+        }
+    }
+}
+
+function countCheckedCell(){
+    let counter=0;
+    $('.bingocell').each(function(){
+        if($(this).hasClass('bg-primary')){
+            counter++;
+        }
+    })
+    $('#num-cell-checked').text(counter);
+}
+
+
+
+function countCheckedLine(){
+    let counter=0;
+    $('#bingo tr').each(function(){
+        //console.log($(this).children('.bg-primary').length);
+        //console.log($(this).children('td').length);
+        if($(this).children('.bg-primary').length==$(this).children('td').length){
+            counter++;
+        }
+        
+    })
+
+    var bingoTR = document.querySelectorAll('#bingo tr');
+    let tempCounter2 = 0; // counter for cells on the diagonal line
+    let tempCounter3 = 0; // counter for cells on the diagonal line
+    for (let i = 0; i < bingoTR.length; i++){
+        let tempCounter = 0;
+        // Check Vertical lines
+        for (let j =0; j < bingoTR.length; j++){
+            if (bingoTR[j].children[i].classList.contains('bg-primary')){
+                tempCounter++;
             }
+        }
+        if(tempCounter == 5){
+            counter++;
+        }
+
+        // Check diagonal line 1
+        if (bingoTR[i].children[i].classList.contains('bg-primary')){
+            tempCounter2++;
+        }
+        if (tempCounter2==5){
+            counter++;
+        }
+
+        // Check diagonal line 2
+        if(bingoTR[i].children[4-i].classList.contains('bg-primary')){
+            tempCounter3++;
+        }
+        if (tempCounter3==5){
+            counter++;
         }
     }
 
-    //change the color of the cell
-    function markCellColor(cell){
-        if(cell.children('span').length>0 && !cell.hasClass('bg-primary')){
-            cell.addClass('bg-primary text-white');
-        }else if(cell.children('span').length==0 && cell.hasClass('bg-primary')){
-            cell.removeClass('bg-primary text-white');
-        }
+
+
+
+    $('#num-line-checked').text(counter);
+}
+
+//change the color of the cell if it is selected
+function markCellColor(cell){
+    if(cell.children('span').length>0 && !cell.hasClass('bg-primary')){
+        cell.addClass('bg-primary text-white');
+    }else if(cell.children('span').length==0 && cell.hasClass('bg-primary')){
+        cell.removeClass('bg-primary text-white');
+    }
+}
+
+$( document ).ready(function(){
+    var user = prompt("Please enter your name", "Harry Potter");
+    if (user != null){
+        $('#greet').text('Hello, '+ user + "!");
+        $('#bingo-heading').text(user+"'s bingo card");
     }
 
     // build a empty bingo table
@@ -42,24 +126,11 @@ $( document ).ready(function(){
     }
     tableContent += "</tbody></table>"
 
-    // append the table to the main html
-    $("#bingo").append(tableContent);
-    // give each cell a classname bingocell
-    $('td').addClass('bingocell');
+    $("#bingo").append(tableContent); // append the table to the main html
+    
+    $('td').addClass('bingocell'); // give each cell a classname bingocell
 
-    // Make a full question list from the json file
-    const questionsFL = [];
-    for (let i = 0; i<questions.cybervsr.length; i++){
-        questionsFL[i]=questions.cybervsr[i];
-    }
-
-    // Randomly select 25 questions from the full 
-    // question list and populate the table
-    for (let i =0; i<$('.bingocell').length; i++){
-        let random_num = Math.floor(Math.random() * questionsFL.length);
-        $('.bingocell')[i].innerHTML = questionsFL[random_num];
-        questionsFL.splice(random_num, 1);
-    }
+    loadQuestion();  // populate the table with questions
 
 
     $('.bingocell').click(function(){
@@ -86,6 +157,8 @@ $( document ).ready(function(){
                     click: function() {
                         addName($thisCell);
                         markCellColor($thisCell);
+                        countCheckedCell();
+                        countCheckedLine()
                         $( this ).dialog( "close" );
                     }
                 },
@@ -104,3 +177,4 @@ $( document ).ready(function(){
         });
     });
 });
+
