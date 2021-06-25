@@ -111,7 +111,7 @@ function countCheckedLine(){
 
     // when user completed a new line, show a alert box
     if(counter > $("#num-line-checked").text()){
-        $("#bingoAlert").html(" &#127942; &#127942;<b>Congratulation!</b>&#128047; You finished " + counter + "line(s)!");
+        $("#bingoAlert").html(" &#127942; &#127942;<b>Congratulation!</b>&#128047; You finished " + counter + " line(s)!");
         $("#bingoAlert").show(800, function(){
             setTimeout(function(){$("#bingoAlert").hide(500);},2000);
         });
@@ -135,6 +135,7 @@ $( document ).ready(function(){
         $('#greet').text('Hello, '+ user + "!");
         $('#bingo-heading').text(user+"'s bingo card");
     }
+
 
     // To enable tooltips
     $(function () {
