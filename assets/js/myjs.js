@@ -50,6 +50,19 @@ function countCheckedCell(){
             counter++;
         }
     })
+
+    if (counter == 1 && counter > $("#num-cell-checked").text()){
+        $("#bingoAlert").html("<b>Congratulation!</b>&#127881; You finished your first box!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
+        });
+    }else if (counter>0 && counter%5 == 0 && counter > $("#num-cell-checked").text()){
+        $("#bingoAlert").html("&#9994;Good job! You finished <b>"+ counter +"</b> boxes!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
+        });
+    }
+
     $('#num-cell-checked').text(counter);
 }
 
@@ -96,12 +109,11 @@ function countCheckedLine(){
         }
     }
 
-    if(counter == 0 || counter <= $("#num-line-checked").text()){
-        $("#bingoAlert").hide();
-    }else{
-        $("#bingoAlert").text("Congratulation! You finished " + counter + "line(s)!");
-        $("#bingoAlert").show(1000, function(){
-            setTimeout(function(){$("#bingoAlert").hide(1000);},2000);
+    // when user completed a new line, show a alert box
+    if(counter > $("#num-line-checked").text()){
+        $("#bingoAlert").html(" &#127942; &#127942;<b>Congratulation!</b>&#128047; You finished " + counter + "line(s)!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
         });
     }
     $('#num-line-checked').text(counter);
