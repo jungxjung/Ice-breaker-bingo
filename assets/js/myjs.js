@@ -36,6 +36,13 @@ function addName(cell){
     }
 }
 
+function clearName(cell){
+    $('#dialog').children('input')[0].value = "";
+    if(cell.children('span').length>0){
+        cell.children('span')[0].remove();
+    }
+}
+
 function countCheckedCell(){
     let counter=0;
     $('.bingocell').each(function(){
@@ -43,6 +50,19 @@ function countCheckedCell(){
             counter++;
         }
     })
+
+    if (counter == 1 && counter > $("#num-cell-checked").text()){
+        $("#bingoAlert").html("<b>Congratulation!</b>&#127881; You finished your first box!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
+        });
+    }else if (counter>0 && counter%5 == 0 && counter > $("#num-cell-checked").text()){
+        $("#bingoAlert").html("&#9994;Good job! You finished <b>"+ counter +"</b> boxes!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
+        });
+    }
+
     $('#num-cell-checked').text(counter);
 }
 
@@ -51,13 +71,11 @@ function countCheckedCell(){
 function countCheckedLine(){
     let counter=0;
     $('#bingo tr').each(function(){
-        //console.log($(this).children('.bg-primary').length);
-        //console.log($(this).children('td').length);
         if($(this).children('.bg-primary').length==$(this).children('td').length){
             counter++;
         }
         
-    })
+    });
 
     var bingoTR = document.querySelectorAll('#bingo tr');
     let tempCounter2 = 0; // counter for cells on the diagonal line
@@ -91,9 +109,13 @@ function countCheckedLine(){
         }
     }
 
-
-
-
+    // when user completed a new line, show a alert box
+    if(counter > $("#num-line-checked").text()){
+        $("#bingoAlert").html(" &#127942; &#127942;<b>Congratulation!</b>&#128047; You finished " + counter + " line(s)!");
+        $("#bingoAlert").show(800, function(){
+            setTimeout(function(){$("#bingoAlert").hide(500);},2000);
+        });
+    }
     $('#num-line-checked').text(counter);
 }
 
@@ -106,12 +128,19 @@ function markCellColor(cell){
     }
 }
 
+
 $( document ).ready(function(){
     var user = prompt("Please enter your name", "Harry Potter");
     if (user != null){
         $('#greet').text('Hello, '+ user + "!");
         $('#bingo-heading').text(user+"'s bingo card");
     }
+
+
+    // To enable tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
 
     // build a empty bingo table
     var tableContent;
@@ -160,8 +189,18 @@ $( document ).ready(function(){
                         addName($thisCell);
                         markCellColor($thisCell);
                         countCheckedCell();
-                        countCheckedLine()
-                        $( this ).dialog( "close" );
+                        countCheckedLine();
+                        $( this ).dialog( "destroy" );
+                    }
+                },
+                {
+                    text: "Clear",
+                    click: function(){
+                        clearName($thisCell);
+                        markCellColor($thisCell);
+                        countCheckedCell();
+                        countCheckedLine();
+                        $( this ).dialog( "destroy" );
                     }
                 },
                 {

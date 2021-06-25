@@ -3,6 +3,10 @@ body{
 }
 
 header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     background-color: #eaedf7;
     box-shadow: 0px 5px 10px #888888;
 }
@@ -11,7 +15,28 @@ header{
     margin-top: 150px;
 }
 
-td:hover{
+#bingo td{
+    cursor: pointer;
+    transition: background-color, 0.5s;
+    transition: color, 0.5s;
+    overflow-wrap: break-word;
+    border: 1px solid black !important;
+    vertical-align: middle;
+}
+
+.alert {
+    width: 25%;
+    position: fixed;
+    right: 20px;
+    top: 150px;
+
+}
+
+#bingoAlert{
+    display: none;
+}
+
+#bingo td:hover{
     background-color: aquamarine;
 }
 
@@ -36,9 +61,7 @@ table {
     table-layout : fixed;
 }
 
-.table-bordered{
-    border: 1px solid black;
-}
+
 
 td span{
     display: block;
@@ -49,4 +72,46 @@ td span{
 #achievement ul li{
     display: inline;
     margin-right: 50px;
+    list-style-type: none;
 }
+
+@media screen and (max-height: 500px) {
+    header {
+        position: relative;
+    }
+
+    #main-bingo-page{
+        margin-top: 50px;
+    }
+
+
+    .alert {
+        width: 80%;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .alert {
+        width: 80%;
+        position: fixed;
+        right: 20px;
+        top: 50px;
+        z-index: 100;
+    }
+
+    header {
+        position: relative;
+    }
+
+    #main-bingo-page{
+        margin-top: 50px;
+    }
+
+    #achievement ul li{
+        margin-right: 20px;
+    }
+  }

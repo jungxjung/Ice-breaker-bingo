@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Icebreaker bingo card generator for CyberVSR 2021">
+    <meta name="keywords" content="Bingo, cyberVSR, icebreaker, teambuilding, online activities, zoom">
+    <meta name="author" content="Chih-Jung Chen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- bootstapt CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- jquery theme css -->
     <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!-- my css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- question lists -->
     <script src="assets/js/icebreakerbingoq.js"></script>
-    <title>Icebreaker Bingo</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32x32.png">
+    <title>CyberVSR 2021 Icebreaker Bingo</title>
 </head>
 <body>
-    <header class="p-2 fixed-top">
+    <header class="p-2">
         <div class="container pt-4">
-            <h2>🧊⛏️Icebreaker Bingo</h2>
+            <h2>🧊⛏️CyberVSR 2021 Icebreaker Bingo</h2>
             <h5 id="greet" class="text-right"></h5>
         </div>
     </header>
+    <div class="alert alert-warning alert-dismissible fade show container" role="alert">
+        🌐🖥️CyberVSR 2021 Icebreaker Bingo will start on <b>Tuesday, June 29th.</b>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
 
     <div id="main-bingo-page" class="container">
         <div id="how">
@@ -45,14 +58,25 @@
                     <h5>Step 5: Repeat step 3&4</h5>
                     <p>We will do the same thing for at least 3 rounds. Don't forget to yell <b>BINGO</b> when you fill five boxes across, down, or diagonal.</p>
                 </div>
+                <div id="step6" class="steps">
+                    <h5>Step 6: Last Hurrah</h5>
+                    <p>If no one completed a line, you can ask me if I am a match. Last chance.</p>
+                </div>
+                <div id="step7" class="steps">
+                    <h5>Step 7: Reflection</h5>
+                    <p>We share interesting facts we learned about someone else.</p>
+                </div>
             </section>
         </div>
-        <main class="container mt-5" id="bingo-table">
-            <h5 id="bingo-heading" class="text-center"></h5>
+
+        <div id="bingoAlert" class="alert alert-info container" role="alert"></div>
+
+        <main class="mt-5" id="bingo-table">
             <div id="shuffleBtnContainer" class="text-center pb-3">
-                <button onclick="return loadQuestion()" id="shuffleBtn">🔄</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="return loadQuestion()" id="shuffleBtn" data-toggle="tooltip" data-placement="right" title="&#8252;You will lose all your current records&#8252;">🔄</button>
             </div>
-            <div id="bingo" class="container"></div>
+            <h5 id="bingo-heading" class="text-center"></h5>
+            <div id="bingo" class="bingo-table"></div>
 
             <div id="dialog" class="text-center">
                 <label for="uname">🧐Who?🤔</label>
@@ -61,11 +85,12 @@
                 <p></p>
             </div>
         </main>
-        <div id="achievement" class="container">
-            <ul>
+        <div id="achievement">
+            <ul class="p-0">
                 <li>Cells Checked: <span id="num-cell-checked">0</span></li>
                 <li>Lines Checked: <span id="num-line-checked">0</span></li>
             </ul>
+            <p>If you would like to contribute to the questions pool, slack/email me or make a pull request <a href="https://github.com/jungxjung/Ice-breaker-bingo">here</a> before next Monday.</p>
         </div>
     </div>
 
@@ -73,12 +98,13 @@
         <p>Made by <a href="http://chih-jung-chen.netlify.app/" target="_blank">Chih-Jung Chen</a> 2021 😁</p>
     </footer>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- jquery -->
+
+    
+    <!-- jQuery first, then jQuery UI, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- jquery-ui -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script src="assets/js/myjs.js"></script>
 </body>
