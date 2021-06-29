@@ -49,6 +49,10 @@ var questions = {
         "IS USING A 5-YEARS-OLD COMPUTER OR OLDER 💻",
         "HAS 2 CELL PHONES 📱📱",
         "PREFERS TO DO RESEARCH IN ROCHESTER IN PERSON THIS SUMMER⛱️",
-        "IS WEARING A WATCH⌚"
+        "IS WEARING A WATCH⌚",
+        "the mother is a dressmaker",
+        "has participated in a short film",
+        "has a blog of poems",
+        "Is a fan of The Legend of Zelda"
     ]
 };
