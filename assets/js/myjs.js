@@ -2,8 +2,8 @@
 // Load questions to the bingo table randomly from json
 function loadQuestion(){
     var questionsFL = [];
-    for (let i = 0; i<questions.cybervsr.length; i++){
-    questionsFL[i]=questions.cybervsr[i];
+    for (let i = 0; i<questions.edx.length; i++){
+    questionsFL[i]=questions.edx[i];
         }
     // Randomly select 25 questions from the full 
     // question list and populate the table
